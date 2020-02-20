@@ -1,8 +1,8 @@
 package com.jn.redisclient.core.key;
 
 public class RedisKeyProperties {
-    private String prefix = RedisKeyBuilder.PREFIX_DEFAULT;
-    private String separation = RedisKeyBuilder.SEPARATOR_DEFAULT;
+    private String prefix = RedisKeyWrapper.PREFIX_DEFAULT;
+    private String separation = RedisKeyWrapper.SEPARATOR_DEFAULT;
 
     public String getPrefix() {
         return prefix;
