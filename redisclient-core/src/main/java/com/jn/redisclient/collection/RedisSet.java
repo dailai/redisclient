@@ -3,7 +3,7 @@ package com.jn.redisclient.collection;
 import com.jn.langx.util.collection.Collects;
 import com.jn.langx.util.function.Predicate;
 import org.springframework.data.redis.core.BoundSetOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.RedisOperations;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ public class RedisSet<E> implements Set<E> {
     private BoundSetOperations ops;
     private String key;
 
-    public RedisSet(RedisTemplate<String, E> template, String key) {
+    public RedisSet(RedisOperations<String, E> template, String key) {
         this.ops = template.boundSetOps(key);
         this.key = key;
     }

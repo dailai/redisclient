@@ -5,7 +5,7 @@ import com.jn.langx.util.collection.Collects;
 import com.jn.langx.util.function.Consumer;
 import com.jn.langx.util.function.Predicate;
 import org.springframework.data.redis.core.BoundListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.RedisOperations;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public class RedisList<E> implements List<E> {
     private BoundListOperations ops;
     private String key;
 
-    public RedisList(RedisTemplate<String, List<E>> redisTemplate, String key) {
+    public RedisList(RedisOperations<String, List<E>> redisTemplate, String key) {
         this.key = key;
         ops = redisTemplate.boundListOps(key);
     }

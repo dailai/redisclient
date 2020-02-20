@@ -1,7 +1,7 @@
 package com.jn.redisclient.collection;
 
 import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.RedisOperations;
 
 import java.util.Collection;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class RedisMap<K, V> implements Map<K, V> {
     private BoundHashOperations ops;
     private String key;
 
-    public RedisMap(RedisTemplate<String, Map<K, V>> redisTemplate, String key) {
+    public RedisMap(RedisOperations<String, Map<K, V>> redisTemplate, String key) {
         this.ops = redisTemplate.boundHashOps(key);
         this.key = key;
     }

@@ -6,7 +6,7 @@ import com.jn.langx.util.collection.Pipeline;
 import com.jn.langx.util.function.Function;
 import com.jn.langx.util.function.Predicate;
 import org.springframework.data.redis.core.BoundZSetOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.ZSetOperations;
 
 import java.util.*;
@@ -15,7 +15,7 @@ public class RedisSortedSet<E> implements SortedSet<ZSetOperations.TypedTuple<E>
     private BoundZSetOperations ops;
     private String key;
 
-    public RedisSortedSet(RedisTemplate<String, E> redisTemplate, String key) {
+    public RedisSortedSet(RedisOperations<String, E> redisTemplate, String key) {
         this.ops = redisTemplate.boundZSetOps(key);
         this.key = key;
     }
