@@ -1,4 +1,4 @@
-package com.jn.redisclient.collection;
+package com.jn.redisclient.supports.collection;
 
 import com.jn.langx.util.collection.Collects;
 import com.jn.langx.util.function.Predicate;

@@ -1,4 +1,4 @@
-package com.jn.redisclient.key;
+package com.jn.redisclient.core.key;
 
 public class RedisKeyProperties {
     private String prefix = RedisKeyBuilder.PREFIX_DEFAULT;

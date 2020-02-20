@@ -1,4 +1,4 @@
-package com.jn.redisclient.key;
+package com.jn.redisclient.core.key;
 
 import com.jn.langx.util.Preconditions;
 import com.jn.langx.util.Strings;

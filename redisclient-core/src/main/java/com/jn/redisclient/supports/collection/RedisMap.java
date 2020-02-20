@@ -1,4 +1,4 @@
-package com.jn.redisclient.collection;
+package com.jn.redisclient.supports.collection;
 
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisOperations;
