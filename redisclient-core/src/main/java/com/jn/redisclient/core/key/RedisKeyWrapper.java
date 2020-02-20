@@ -42,24 +42,51 @@ public class RedisKeyWrapper {
         return Strings.isEmpty(prefix) ? key : (prefix + separation + key);
     }
 
-    public static String wrap(RedisKeyWrapper builder, String key) {
-        return builder.wrap(key);
+    public String unwrap(String key) {
+        String prefix = this.prefix + separation;
+        if (key.startsWith(prefix) && key.length() > prefix.length()) {
+            return key.substring(prefix.length());
+        }
+        return key;
     }
 
-    public static List<String> wrap(final RedisKeyWrapper builder, Collection<String> keys) {
-        return Pipeline.of(keys).map(new Function<String, String>() {
+    public static String wrap(RedisKeyWrapper wrapper, String key) {
+        return wrapper.wrap(key);
+    }
+
+    public static String unwrap(RedisKeyWrapper wrapper, String key) {
+        return wrapper.unwrap(key);
+    }
+
+    public static <C extends Collection<String>> C unwrap(final RedisKeyWrapper wrapper, C keys) {
+        List<String> a = Pipeline.of(keys).map(new Function<String, String>() {
             @Override
             public String apply(String key) {
-                return builder.wrap(key);
+                return wrapper.wrap(key);
             }
         }).asList();
+        keys.clear();
+        keys.addAll(a);
+        return keys;
     }
 
-    public static String[] wrap(final RedisKeyWrapper builder, String... keys) {
+    public static <C extends Collection<String>> C wrap(final RedisKeyWrapper wrapper, C keys) {
+        List<String> a = Pipeline.of(keys).map(new Function<String, String>() {
+            @Override
+            public String apply(String key) {
+                return wrapper.wrap(key);
+            }
+        }).asList();
+        keys.clear();
+        keys.addAll(a);
+        return keys;
+    }
+
+    public static String[] wrap(final RedisKeyWrapper wrapper, String... keys) {
         return Pipeline.of(keys).map(new Function<String, String>() {
             @Override
             public String apply(String key) {
-                return builder.wrap(key);
+                return wrapper.wrap(key);
             }
         }).toArray(String[].class);
     }
