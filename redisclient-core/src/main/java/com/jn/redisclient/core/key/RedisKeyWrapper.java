@@ -62,12 +62,21 @@ public class RedisKeyWrapper {
         List<String> a = Pipeline.of(keys).map(new Function<String, String>() {
             @Override
             public String apply(String key) {
-                return wrapper.wrap(key);
+                return wrapper.unwrap(key);
             }
         }).asList();
         keys.clear();
         keys.addAll(a);
         return keys;
+    }
+
+    public static String[] unwrap(final RedisKeyWrapper wrapper, String... keys) {
+        return Pipeline.of(keys).map(new Function<String, String>() {
+            @Override
+            public String apply(String key) {
+                return wrapper.unwrap(key);
+            }
+        }).toArray(String[].class);
     }
 
     public static <C extends Collection<String>> C wrap(final RedisKeyWrapper wrapper, C keys) {
