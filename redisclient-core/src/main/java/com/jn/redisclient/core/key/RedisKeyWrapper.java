@@ -30,11 +30,27 @@ public class RedisKeyWrapper {
         return this;
     }
 
+    public String prefix(){
+        return this.prefix;
+    }
+
+    public String separation(){
+        return this.separation;
+    }
+
     public RedisKeyWrapper separation(String separation) {
         if (Strings.isNotBlank(separation)) {
             this.separation = separation;
         }
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "RedisKeyWrapper{" +
+                "prefix='" + prefix + '\'' +
+                ", separation='" + separation + '\'' +
+                '}';
     }
 
     public String wrap(String key) {
