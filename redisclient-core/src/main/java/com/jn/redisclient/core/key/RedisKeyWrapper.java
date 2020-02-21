@@ -39,12 +39,12 @@ public class RedisKeyWrapper {
 
     public String wrap(String key) {
         Preconditions.checkNotNull(key);
-        return Strings.isEmpty(prefix) ? key : (prefix + separation + key);
+        return Strings.isBlank(prefix) ? key : (prefix + separation + key);
     }
 
     public String unwrap(String key) {
         String prefix = this.prefix + separation;
-        if (key.startsWith(prefix) && key.length() > prefix.length()) {
+        if (Strings.isNotBlank(prefix) && key.startsWith(prefix) && key.length() > prefix.length()) {
             return key.substring(prefix.length());
         }
         return key;
