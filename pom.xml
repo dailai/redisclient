@@ -9,7 +9,41 @@
     <version>1.0.0</version>
     <name>redisclient-parent</name>
     <packaging>pom</packaging>
-
+    <description>
+        Redis Client
+    </description>
+    <url>https://github.com/fangjinuo/langx-java</url>
+    <developers>
+        <developer>
+            <id>jinuo.fang</id>
+            <name>jinuo.fang</name>
+            <email>fs1194361820@163.com</email>
+            <url>http://www.cnblogs.com/f1194361820</url>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype_oss</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype_oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
+    <scm>
+        <tag>${project.version}</tag>
+        <url>https://github.com/fangjinuo/langx-java.git</url>
+        <connection>https://github.com/fangjinuo/langx-java.git</connection>
+        <developerConnection>https://github.com/fangjinuo/langx-java.git</developerConnection>
+    </scm>
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/fangjinuo/langx-java/blob/master/LICENSE</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
     <modules>
         <module>redisclient-core</module>
     </modules>
@@ -17,7 +51,7 @@
     <properties>
         <slf4j.version>1.7.26</slf4j.version>
         <easyjson.version>2.1.0</easyjson.version>
-        <langx-java.version>2.0.1</langx-java.version>
+        <langx-java.version>2.1.0</langx-java.version>
         <httpclient.version>4.5.11</httpclient.version>
 
         <spring.data.redis.version>2.2.4.RELEASE</spring.data.redis.version>
@@ -165,7 +199,7 @@
                         </goals>
                         <configuration>
                             <buildNumberPropertyName>buildNumber</buildNumberPropertyName>
-                            <revisionOnScmFailure>unknow</revisionOnScmFailure>
+                            <revisionOnScmFailure>unknown</revisionOnScmFailure>
                             <doCheck>false</doCheck>
                             <doUpdate>true</doUpdate>
                             <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
